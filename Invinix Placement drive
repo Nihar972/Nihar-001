@@ -1,0 +1,33 @@
+import java.util.*;
+class NaughtyDetector {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        Map<String, Integer> map = new HashMap<>();
+
+        for(int i = 0; i < n; i++){
+            String name = sc.next();
+            map.put(name, map.getOrDefault(name, 0) + 1);
+        }
+
+        int max = 0;
+        String maxName = "";
+        for(String name : map.keySet()){
+            if(map.get(name) > max){
+                max = map.get(name);
+                maxName = name;
+            }
+        }
+        int min = Integer.MAX_VALUE;
+        String minName = "";
+        for(String name : map.keySet()){
+
+            if(map.get(name) < min){
+                min = map.get(name);
+                minName = name;
+            }
+        }
+        System.out.println("Most Naughty " + maxName);
+        System.out.println("Least Naughty " + minName);
+    }
+}
